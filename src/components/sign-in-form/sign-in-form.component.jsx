@@ -8,7 +8,7 @@ import {
   signInWithGooglePopup,
 } from '../../utils/firebase/firebase.utils';
 
-import { SignInContainer, ButtonsContainer } from './sign-in-form.styles.jsx';
+import { SignInContainer, ButtonsContainer, Reset } from './sign-in-form.styles.jsx';
 
 import { useDispatch } from 'react-redux/es/exports';
 import {
@@ -16,6 +16,7 @@ import {
   emailSignInStart,
 } from '../../store/user/user.action';
 
+import { Link } from 'react-router-dom';
 
 
 const defaultFormFields = {
@@ -84,10 +85,18 @@ const SignInForm = () => {
           >
             Google Sign In
           </Button>
+
+
         </ButtonsContainer>
       </form>
+
+      <Reset>
+        <Link to="/recovery"> Reset Password</Link>
+      </Reset>
+
     </SignInContainer>
   );
 };
+
 
 export default SignInForm;

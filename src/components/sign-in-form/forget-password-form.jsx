@@ -6,9 +6,10 @@ import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
 
 
 import { SignInContainer, ButtonsContainer } from './sign-in-form.styles.jsx';
+import { auth } from '../../utils/firebase/firebase.utils';
+import { sendPasswordResetEmail } from 'firebase/auth';
 
-import { useDispatch } from 'react-redux/es/exports';
-
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -22,6 +23,10 @@ const ForgetPasswordForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { email } = formFields;
 
+    const resetFormFields = () => {
+        setFormFields(defaultFormFields);
+    };
+    const navigate = useNavigate();
 
 
 
@@ -35,10 +40,20 @@ const ForgetPasswordForm = () => {
         try {
 
 
+            const config = {
+                url: 'http://localhost:3000/auth'
+            }
+            await sendPasswordResetEmail(auth, email, config).then(() => {
+                navigate(-1);
 
+            })
+                .catch(() => {
+
+                    alert('email not found');
+                });
 
         } catch (error) {
-            console.log('user sign in failed', error);
+            console.log(error);
         }
     };
 
@@ -50,7 +65,7 @@ const ForgetPasswordForm = () => {
 
     return (
         <SignInContainer>
-            <h2>Email Password</h2>
+            <h2>Forget Password</h2>
 
             <form onSubmit={handleSubmit}>
                 <FormInput

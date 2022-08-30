@@ -9,9 +9,23 @@ export const SignInContainer = styled.div`
     margin: 10px 0;
   }
 
+  
+
 `;
 
 export const ButtonsContainer = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
+export const Reset = styled.div`
+  display: block;
+  margin:: 15px auto 0;
+  padding-top: 10px;
+  font-size: 18px;
+
+  a{
+    color: #FE5BAC;
+  }
+
+`

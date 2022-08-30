@@ -31,7 +31,7 @@ const Navigation = () => {
         <NavLinks>
           <NavLink to='/shop'>SHOP</NavLink>
           <NavLink to='/about'>ABOUT</NavLink>
-          {/* <NavLink to='/recovery'>forget</NavLink> */}
+
           {currentUser ? (
             <>
 

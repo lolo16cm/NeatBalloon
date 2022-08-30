@@ -7,7 +7,7 @@ export const FooterWrapper = styled.footer`
     justify-content: center;
     align-items: center;
     text-align: center;
-        span{color: pink;}
+        span{color: #FE5BAC;}
         h5{
             margin: 0 15px;
             padding-top: 5px;
