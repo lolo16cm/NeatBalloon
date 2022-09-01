@@ -8,9 +8,9 @@ export const stripePromise = loadStripe('pk_test_di8U5kwkIw2iMILBVvqjIriu');
 
 const Payment = () => {
     return(
-        <Elements stripe={stripePromise}>
+        // <Elements stripe={stripePromise}>
             <PaymentDetails />
-        </Elements>
+        // </Elements>
             
         
     );
