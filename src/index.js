@@ -8,7 +8,7 @@ import App from './App';
 // import { CartProvider } from './contexts/cart.context';
 
 import { Elements } from '@stripe/react-stripe-js';
-import { stripePromise } from './utils/stripe/stripe.utils';
+import { stripePromise } from './routes/payment/payment';
 
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';

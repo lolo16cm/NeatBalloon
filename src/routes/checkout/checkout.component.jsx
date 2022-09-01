@@ -17,10 +17,17 @@ import {
     HeaderBlock,
     Total,
 } from "./checkout.styles";
+import Payment from "../payment/payment";
+import { useNavigate } from 'react-router-dom';
+import Button from "../../components/button/button.component";
 
 const Checkout = () => {
     const cartItems = useSelector(selectCartItems);
     const cartTotal = useSelector(selectCartTotal);
+    const navigate = useNavigate();
+    const goToPayment = () => {
+        navigate('/payment')
+      }
 
     return (
         <CheckoutContainer>
@@ -45,8 +52,10 @@ const Checkout = () => {
                 <CheckoutItem key={cartItem.id} cartItem={cartItem} />
             ))}
             <Total>Total: ${cartTotal}</Total>
+            
+            <Button onClick={goToPayment}>continue to payment</Button>
 
-            <StripeCheckoutButton />
+            {/* <StripeCheckoutButton /> */}
         </CheckoutContainer>
     );
 };

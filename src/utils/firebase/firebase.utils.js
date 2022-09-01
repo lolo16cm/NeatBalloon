@@ -10,6 +10,7 @@ import {
   onAuthStateChanged,
 } from 'firebase/auth';
 import { getFirestore, doc, getDoc, setDoc, collection, writeBatch, query, getDocs } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBBE2TCM_QBCOGc25wwiaV3Rah3aFyoK4g",
@@ -124,11 +125,14 @@ export const signOutUser = async () => await signOut(auth);
 export const onAuthStateChangedListener = (callback) =>
   onAuthStateChanged(auth, callback);
 
+
 export const getCurrentUser = () => {
+
   return new Promise((resolve, reject) => {
     const unsubscribe = onAuthStateChanged(
       auth,
       (userAuth) => {
+
         unsubscribe();
         resolve(userAuth);
       },
