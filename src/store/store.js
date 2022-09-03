@@ -32,7 +32,6 @@ export const store = createStore(
     undefined,
     composedEnhancers
 );
-
-
 sagaMiddleware.run(rootSaga);
+
 export const persistor = persistStore(store);

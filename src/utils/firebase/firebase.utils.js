@@ -12,9 +12,6 @@ import {
 import { getFirestore, doc, getDoc, setDoc, collection, writeBatch, query, getDocs } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 
-import 'firebase/compat/firestore';
-
-
 const firebaseConfig = {
   apiKey: "AIzaSyBBE2TCM_QBCOGc25wwiaV3Rah3aFyoK4g",
   authDomain: "loveballoon-ff2d0.firebaseapp.com",
@@ -26,7 +23,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
-
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -40,7 +36,7 @@ export const signInWithGooglePopup = () =>
 export const signInWithGoogleRedirect = () =>
   signInWithRedirect(auth, googleProvider);
 
-export const db = getFirestore();
+export const db = getFirestore(firebaseApp);
 
 
 //import outside data into firebase data

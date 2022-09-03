@@ -46,7 +46,7 @@ const PaymentDetails = () => {
 
       useEffect(() => {
         if (itemCount < 1) { 
-          navigate('account');
+        //   navigate('account');
         }
     
       }, [itemCount]);
@@ -97,18 +97,15 @@ const PaymentDetails = () => {
               })
                 .then(({ paymentIntent }) => {
                     console.log(paymentIntent);
-                    
                     const configOrder = {
                         orderTotal: total,
                         orderItems: cartItems.map(item => {
-                          const { documentID, productThumbnail, productName,
-                            productPrice, quantity } = item;
-            
+                          const { imageUrl, name, price, quantity } = item;
+                        
                           return {
-                            documentID,
-                            productThumbnail,
-                            productName,
-                            productPrice,
+                            imageUrl,
+                            name,
+                            price,
                             quantity
                           };
                         })
