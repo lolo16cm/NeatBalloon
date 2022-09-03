@@ -47,25 +47,25 @@ export const handleSaveOrder = async (order) => {
 // };
 
 export const handleGetUserOrderHistory = async(uid) => {
-    console.log("uid:",uid);
-    const collectionRef = collection(db, 'orders').get().then((querySnapshot) => {
-             
-      // Loop through the data and store
-      // it in array to display
-      querySnapshot.forEach(element => {
-          var data = element.data();
-          // setInfo(arr => [...arr , data]);
-            console.log(data);
-      });
+    // console.log("uid:",uid);
+    // const collectionRef = collection(db, 'orders').getDocs();
+    
+    // console.log("collctRef: ", collectionRef);
+    const collectionRef = [];
+    const querySnapshot = await getDocs(collection(db, 'orders'));
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      if(doc.data().orderUserID == uid){
+        console.log(doc.id, " => ", doc.data());
+      }
     });
-    // .orderBy('orderCreatedDate');
-    collectionRef = collectionRef.where('orderUserID', '==', uid);
-    console.log("orderUserID:", collectionRef.orderUserID);
-    const q = query(collectionRef);
+    // collectionRef = collectionRef.where('orderUserID', '==', uid);
+    // await addDoc(collectionRef, ...data);
+    // console.log("orderUserID:", collectionRef.orderUserID);
+    // const q = query(collectionRef);
 
-    console.log("collctRef: ", collectionRef);
 
-  const querySnapshot = await getDocs(q);
+  // const querySnapshot = await getDocs(q);
   return querySnapshot.docs.map((doc) => doc.data());
 };
 

@@ -3882,3 +3882,35 @@ Issues? Report them at https://github.com/firebase/firebase-tools/issues and att
 [info] i  functions: Finished "api" in ~1s {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"api\" in ~1s"}}
 [debug] [2022-09-03T06:41:03.631Z] [worker-us-central1-api-8a788383-8eb9-4d1f-a8fd-08ce0119e130]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-8a788383-8eb9-4d1f-a8fd-08ce0119e130]: IDLE"}}
 [debug] [2022-09-03T06:41:03.631Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2022-09-03T17:32:52.391Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2022-09-03T17:32:52.393Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-09-03T17:32:52.393Z] Accepted request OPTIONS /loveballoon-ff2d0/us-central1/api/payments/create --> us-central1-api
+[debug] [2022-09-03T17:32:52.393Z] [worker-pool] submitWork(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=us-central1-api)"}}
+[debug] [2022-09-03T17:32:52.394Z] [worker-us-central1-api-80cf9c25-92fe-47c9-974f-ab47c3c89af0]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-80cf9c25-92fe-47c9-974f-ab47c3c89af0]: BUSY"}}
+[debug] [2022-09-03T17:32:52.406Z] [runtime-status] [26796] Beginning invocation function api! {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [26796] Beginning invocation function api!"}}
+[info] i  functions: Beginning execution of "api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"api\""}}
+[debug] [2022-09-03T17:32:52.409Z] [runtime-status] [26796] Running api in signature http {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [26796] Running api in signature http"}}
+[debug] [2022-09-03T17:32:52.421Z] [runtime-status] [26796] Listening to port: \\?\pipe\fire_emu_c236b7f73fa4373e {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [26796] Listening to port: \\\\?\\pipe\\fire_emu_c236b7f73fa4373e"}}
+[debug] [2022-09-03T17:32:52.513Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2022-09-03T17:32:52.514Z] [functions] Got req.url=/loveballoon-ff2d0/us-central1/api/payments/create, mapping to path=/payments/create {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/loveballoon-ff2d0/us-central1/api/payments/create, mapping to path=/payments/create"}}
+[debug] [2022-09-03T17:32:52.515Z] [runtime-status] [26796] Ephemeral server handling OPTIONS request {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [26796] Ephemeral server handling OPTIONS request"}}
+[debug] [2022-09-03T17:32:52.518Z] [runtime-status] [26796] Ephemeral server survived. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [26796] Ephemeral server survived."}}
+[info] i  functions: Finished "api" in ~1s {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"api\" in ~1s"}}
+[debug] [2022-09-03T17:32:52.520Z] [work-queue] {"queueLength":1,"workRunningCount":1}
+[debug] [2022-09-03T17:32:52.520Z] [work-queue] {"queueLength":0,"workRunningCount":2}
+[debug] [2022-09-03T17:32:52.520Z] Accepted request POST /loveballoon-ff2d0/us-central1/api/payments/create --> us-central1-api
+[debug] [2022-09-03T17:32:52.520Z] [worker-pool] submitWork(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=us-central1-api)"}}
+[debug] [2022-09-03T17:32:52.521Z] [worker-us-central1-api-8a788383-8eb9-4d1f-a8fd-08ce0119e130]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-8a788383-8eb9-4d1f-a8fd-08ce0119e130]: BUSY"}}
+[debug] [2022-09-03T17:32:52.521Z] [worker-us-central1-api-80cf9c25-92fe-47c9-974f-ab47c3c89af0]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-80cf9c25-92fe-47c9-974f-ab47c3c89af0]: IDLE"}}
+[debug] [2022-09-03T17:32:52.522Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2022-09-03T17:32:52.531Z] [runtime-status] [5472] Beginning invocation function api! {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5472] Beginning invocation function api!"}}
+[info] i  functions: Beginning execution of "api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"api\""}}
+[debug] [2022-09-03T17:32:52.532Z] [runtime-status] [5472] Running api in signature http {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5472] Running api in signature http"}}
+[debug] [2022-09-03T17:32:52.541Z] [runtime-status] [5472] Listening to port: \\?\pipe\fire_emu_638635bd037f454a {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5472] Listening to port: \\\\?\\pipe\\fire_emu_638635bd037f454a"}}
+[debug] [2022-09-03T17:32:52.637Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2022-09-03T17:32:52.638Z] [functions] Got req.url=/loveballoon-ff2d0/us-central1/api/payments/create, mapping to path=/payments/create {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/loveballoon-ff2d0/us-central1/api/payments/create, mapping to path=/payments/create"}}
+[debug] [2022-09-03T17:32:52.641Z] [runtime-status] [5472] Ephemeral server handling POST request {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5472] Ephemeral server handling POST request"}}
+[debug] [2022-09-03T17:32:52.650Z] [runtime-status] [5472] Ephemeral server survived. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [5472] Ephemeral server survived."}}
+[info] i  functions: Finished "api" in ~1s {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"api\" in ~1s"}}
+[debug] [2022-09-03T17:32:53.155Z] [worker-us-central1-api-8a788383-8eb9-4d1f-a8fd-08ce0119e130]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-8a788383-8eb9-4d1f-a8fd-08ce0119e130]: IDLE"}}
+[debug] [2022-09-03T17:32:53.155Z] [work-queue] {"queueLength":0,"workRunningCount":0}

@@ -32,7 +32,7 @@ const styles = {
       case 'orderTotal':
         return `$${columnValue}`;
       case 'orderCreatedDate':
-        return moment(columnValue.nano).format('DD/MM/YYYY')
+        return moment(columnValue).format('DD/MM/YYYY')
       default:
         return columnValue;
     }
@@ -73,7 +73,7 @@ const styles = {
                   onClick={() => navigate(`/order/${documentID}`)}
                 >
   
-                  {columns.map((column, pos) => {
+                  {/* {columns.map((column, pos) => {
                     const columnName = column.id;
                     const columnValue = row[columnName];
                     const formattedText = formatText(columnName, columnValue);
@@ -86,7 +86,7 @@ const styles = {
                         {formattedText}
                       </TableCell>
                     )
-                  })}
+                  })} */}
   
                 </TableRow>
               )

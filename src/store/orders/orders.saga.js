@@ -7,7 +7,7 @@ import { clearCart } from '../cart/cart.action';
 import { setUserOrderHistory } from './orders.action';
 
 export function* getUserOrderHistory({ payload }) {
-  
+  // console.log("orders-saga,getorderhistory")
   try {
     const history = yield handleGetUserOrderHistory(payload);
     yield put(
