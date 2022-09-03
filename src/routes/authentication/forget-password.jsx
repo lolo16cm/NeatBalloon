@@ -1,4 +1,4 @@
-import React from "react";
+
 import ForgetPasswordForm from "../../components/sign-in-form/forget-password-form";
 
 const Recovery = () => {

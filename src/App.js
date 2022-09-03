@@ -12,6 +12,7 @@ import Recovery from './routes/authentication/forget-password';
 import Footer from './components/footer/footer';
 import PaymentDetails from './components/payment-details/payment-details';
 import Payment from './routes/payment/payment';
+import Account from './routes/account/account-route';
 import { checkUserSession } from './store/user/user.action';
 // import {
 //   onAuthStateChangedListener,
@@ -50,6 +51,7 @@ const App = () => {
           <Route path='checkout' element={<Checkout />} />
           <Route path='recovery' element={<Recovery />} />
           <Route path='payment' element={<Payment />} />
+          <Route path='account' element={<Account />} />
         </Route>
       </Routes>
       <Footer />

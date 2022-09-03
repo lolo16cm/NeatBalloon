@@ -25,7 +25,7 @@ const defaultFormFields = {
 
 const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
-  const { displayName, email, password, confirmPassword, fullName } = formFields;
+  const { displayName, email, password, confirmPassword } = formFields;
   const dispatch = useDispatch();
 
   const resetFormFields = () => {
@@ -64,7 +64,7 @@ const SignUpForm = () => {
       <span>Sign up with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
-          label='Display Name'
+          label='First name  Last name'
           type='text'
           required
           onChange={handleChange}

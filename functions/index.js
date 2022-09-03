@@ -2,7 +2,6 @@ const functions = require('firebase-functions');
 const express = require('express');
 const cors = require('cors');
 const stripe = require('stripe')('sk_test_nVQ2CnkSoJ95jhuXsjQsS05B');
-
 const app = express();
 
 app.use(cors({
@@ -16,8 +15,7 @@ app.post('/payments/create', async (req, res) => {
     const paymentIntent = await stripe.paymentIntents.create({
       shipping,
       amount,
-      currency: 'usd',
-      payment_method_types: ["card"]
+      currency: 'usd'
     });
 
     res

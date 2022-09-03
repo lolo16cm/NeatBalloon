@@ -1,13 +1,22 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
+import { useNavigate } from 'react-router-dom';
+
 import FormInput from "../form-input/form-input.component";
 import Button from '../button/button.component';
 import { PaymentDetailsContainer } from "./payment-details.styles";
 
-import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
+import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { apiInstance } from '../../utils/firebase/axios';
-import { selectCartTotal } from '../../store/cart/cart.selector';
-import { useSelector, useDispatch } from 'react-redux';
+
+import { selectCartTotal, selectCartCount, selectCartItems } from '../../store/cart/cart.selector';
+import { useSelector, useDispatch} from 'react-redux';
+
+import { saveOrderHistory } from '../../store/orders/orders.action'
 import { clearCart } from "../../store/cart/cart.action";
+
+
+
+
 
 const initialAddress ={
     line1:'',
@@ -21,10 +30,26 @@ const initialAddress ={
 
 const PaymentDetails = () => {
     const total = useSelector(selectCartTotal);
-    const dispacth = useDispatch();
+    const itemCount = useSelector(selectCartCount);
+    const cartItems = useSelector(selectCartItems);
+    const dispatch = useDispatch();
     const stripe = useStripe();
     const elements = useElements();
+    const navigate = useNavigate();
 
+    const mapState = ({
+        total: total,
+        itemCount: itemCount,
+        cartItems: cartItems,
+      });
+ 
+
+      useEffect(() => {
+        if (itemCount < 1) { 
+          navigate('account');
+        }
+    
+      }, [itemCount]);
 
     const [shippingAddress, setShippingAddress] =  useState({...initialAddress});
     const [billingAddress, setBillingAddress] =  useState({...initialAddress});
@@ -54,21 +79,45 @@ const PaymentDetails = () => {
                     ...shippingAddress
                 }
             }
-        }).then(({data: clientSecret}) => {
+        }).then(({ data: clientSecret }) => {
+
             stripe.createPaymentMethod({
-                type: 'card',
-                card: cardElement,
-                billing_Details:{
-                    name: nameOnCard,
-                    addresss: {
-                        ...billingAddress
-                    }
+              type: 'card',
+              card: cardElement,
+              billing_details: {
+                name: nameOnCard,
+                address: {
+                  ...billingAddress
                 }
-            }).then(({paymentMethod}) => {
-                stripe.confirmCardPayment(clientSecret, {
-                    payment_method: paymentMethod.id
-                })
-                .then(({ paymentIntent }) => {console.log(paymentIntent)});
+              }
+            }).then(({ paymentMethod }) => {
+      
+              stripe.confirmCardPayment(clientSecret, {
+                payment_method: paymentMethod.id
+              })
+                .then(({ paymentIntent }) => {
+                    console.log(paymentIntent);
+                    
+                    const configOrder = {
+                        orderTotal: total,
+                        orderItems: cartItems.map(item => {
+                          const { documentID, productThumbnail, productName,
+                            productPrice, quantity } = item;
+            
+                          return {
+                            documentID,
+                            productThumbnail,
+                            productName,
+                            productPrice,
+                            quantity
+                          };
+                        })
+                      }
+            
+                      dispatch(
+                        saveOrderHistory(configOrder)
+                      );
+                    });
             })
         });
 

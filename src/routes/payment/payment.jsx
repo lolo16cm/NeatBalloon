@@ -10,10 +10,10 @@ const Payment = () => {
     return(
         // <Elements stripe={stripePromise}>
             <PaymentDetails />
-        // </Elements>git 
+        // </Elements>
             
         
-    );
+    ); 
 
 };
 
