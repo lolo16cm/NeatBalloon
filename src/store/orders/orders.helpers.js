@@ -1,7 +1,6 @@
 // import { addDoc, collection } from "firebase/firestore";
-import React from 'react';
 import { db } from "../../utils/firebase/firebase.utils";
-import { getFirestore, doc, getDoc, setDoc, collection, writeBatch, query, getDocs, addDoc, orderBy, where } from 'firebase/firestore';
+import { doc, getDoc, collection, query, getDocs, addDoc, orderBy, where } from 'firebase/firestore';
 
 export const handleSaveOrder = async (order) => { 
   const orderDocRef = collection(db, 'orders')
@@ -36,24 +35,20 @@ export const handleGetUserOrderHistory = async(uid) => {
 };
 
 export const handleGetOrder = async(orderID) => {
-  console.log('handleGetOrder');
+  return new Promise((resolve, reject) =>{
     const collectionRef = doc(db, 'orders', orderID);
-    console.log('collectionRef:', collectionRef);
     const q = query(collectionRef);
-    const orderDetails = await getDoc(q).then(snap => {
+    getDoc(q)
+    .then(snap => {
       if (snap.exists) {
-        const data = ({
+        resolve({
           ...snap.data(),
           documentID: orderID
-        });
-        console.log('orderDetails:',data);
-        return( data );
+        })
       }
-      // console.log('failed return object')
-    }).catch(err => {
-      console.log(err.message);
     })
-    // console.log('detail-data',querySnapshot);
-    // console.log('done handleGetOrder');
-    return orderDetails;  
+    .catch(err => {
+      reject(err);
+    })
+  })     
 }

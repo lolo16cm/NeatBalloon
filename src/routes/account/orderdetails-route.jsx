@@ -4,8 +4,8 @@ import { getOrderDetailsStart } from '../../store/orders/orders.action';
 import { useDispatch, useSelector } from 'react-redux';
 import OrderDetails from './../../components/account-component/order-details';
 
-const mapState = ({ ordersData }) => ({
-  orderDetails: ordersData.orderDetails
+const mapState = ({ orders }) => ({
+  orderDetails: orders.orderDetails
 });
 
 const Order = () => {
@@ -13,12 +13,11 @@ const Order = () => {
   const dispatch = useDispatch();
   const { orderDetails } = useSelector(mapState);
   const { orderTotal } = orderDetails;
-
+    // console.log('orderDetails:',orderDetails);
   useEffect(() => {
     dispatch(
       getOrderDetailsStart(orderID)
     );    
-    console.log(orderID);
   }, []);
 
   return (
@@ -31,7 +30,7 @@ const Order = () => {
       <OrderDetails order={orderDetails} />
 
       <h3>
-        Total: {orderTotal}
+        Total: {Intl.NumberFormat('en-IN', { maximumSignificantDigits: 10 }).format(orderTotal)}
       </h3>
 
     </div>

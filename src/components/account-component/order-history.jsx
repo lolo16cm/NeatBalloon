@@ -9,15 +9,15 @@ import { useNavigate } from 'react-router-dom';
 const columns = [
     {
         id: 'orderCreatedDate',
-        lable: 'Order Date'
+        label: 'Order Date'
     },
     {
         id: 'documentID',
-        lable: 'Order ID'
+        label: 'Order ID'
     },
     {
         id: 'orderTotal',
-        lable: 'Total Amount'
+        label: 'Total Amount'
     }
 ]
 
@@ -39,7 +39,7 @@ const styles = {
   };
 
   const OrderHistory = ({ orders }) => {
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     return (
       <TableContainer>
@@ -48,14 +48,14 @@ const styles = {
           <TableHead>
             <TableRow>
               {columns.map((column, pos) => {
-                const { lable } = column;
+                const { label } = column;
   
                 return (
                   <TableCell
                     key={pos}
                     style={styles}
                   >
-                    {lable}
+                    {label}
                   </TableCell>
                 )
               })}
@@ -70,7 +70,7 @@ const styles = {
               return (
                 <TableRow
                   key={pos}
-                  onClick={() => history(`/order/${documentID}`)}
+                  onClick={() => navigate(`/order/${documentID}`)}
                 >
   
                   {columns.map((column, pos) => {
@@ -79,7 +79,6 @@ const styles = {
                     const formattedText = formatText(columnName, columnValue);
   
                     return (
-                      console.log('pos',pos),
                       <TableCell
                         key={pos}
                         style={styles}
