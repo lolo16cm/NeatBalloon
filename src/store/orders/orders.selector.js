@@ -1,9 +1,8 @@
-// import { createSelector } from 'reselect';
+import { createSelector } from 'reselect';
 
-// const selectOrderReducer = (state) => state.orders;
+const selectOrderReducer = (state) => state.orders;
 
-// export const selectOrderHistory = createSelector(
-//     [selectOrderReducer],
-//     (orders) => orders.orderHistory
-// );
-export const selectOrderHistory = (state) => state.orderHistory;
+export const selectOrderHistory = createSelector(
+    [selectOrderReducer],
+    (orders) => orders.orderHistory.data
+);

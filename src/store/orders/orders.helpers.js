@@ -1,21 +1,9 @@
 // import { addDoc, collection } from "firebase/firestore";
+import React from 'react';
 import { db } from "../../utils/firebase/firebase.utils";
-import { getFirestore, doc, getDoc, setDoc, collection, writeBatch, query, getDocs, addDoc } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, setDoc, collection, writeBatch, query, getDocs, addDoc, orderBy, where } from 'firebase/firestore';
 
-export const handleSaveOrder = async (order) => {
-
-  console.log(order);
-  // const items = order.orderItems[0];
-  // console.log("items:",items)
-  // const orderDocRef = collection(db, 'orders').doc(order.orderUserID)
-  //   promises.push(
-  //     orderDocRef.get()
-  //     .then(data =>{
-  //       const orderCreatedDate = order.orderCreatedDate
-  //       const orderTotal = order.
-  //     })
-  //   )
- 
+export const handleSaveOrder = async (order) => { 
   const orderDocRef = collection(db, 'orders')
   addDoc(orderDocRef, {
       orderUserID: order.orderUserID,
@@ -30,88 +18,42 @@ export const handleSaveOrder = async (order) => {
     return orderDocRef;
   };
 
-// export const handleSaveOrder = async(order) => {
-//   console.log(order);d
-//   await setDoc(doc(db, 'orders'), order); 
-//   // return new Promise((resolve, reject) => {
-    
-//       // .collection('orders')
-//       // .set(order)
-//       // .then(() => {
-//       //   resolve();
-//       // })
-//       // .catch(err => {
-//       //   reject(err);
-//       // });
-//   // });
-// };
-
 export const handleGetUserOrderHistory = async(uid) => {
-    // console.log("uid:",uid);
-    // const collectionRef = collection(db, 'orders').getDocs();
-    
-    // console.log("collctRef: ", collectionRef);
-    const collectionRef = [];
-    const querySnapshot = await getDocs(collection(db, 'orders'));
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      if(doc.data().orderUserID == uid){
-        console.log(doc.id, " => ", doc.data());
-      }
-    });
-    // collectionRef = collectionRef.where('orderUserID', '==', uid);
-    // await addDoc(collectionRef, ...data);
-    // console.log("orderUserID:", collectionRef.orderUserID);
-    // const q = query(collectionRef);
-
-
-  // const querySnapshot = await getDocs(q);
-  return querySnapshot.docs.map((doc) => doc.data());
+  const collectionRef= collection(db, 'orders');
+  const q = query(collectionRef, orderBy('orderCreatedDate'), where('orderUserID', '==', uid));
+  const querySnapshot = await getDocs(q).then(snap => {
+        const data = [
+          ...snap.docs.map(doc => {
+            return {
+              ...doc.data(),
+              documentID: doc.id
+            }
+          })
+        ];
+        return({ data });
+      });
+  return querySnapshot;
 };
 
-
-
-    // let ref = collectionRef.orderBy('orderCreatedDate');
-    // ref = ref.where('orderUserID', '==', uid);
-
-    // ref
-    //   .get()
-    //   .then(snap => {
-    //     const data = [
-    //       ...snap.docs.map(doc => {
-    //         return {
-    //           ...doc.data(),
-    //           documentID: doc.id
-    //         }
-    //       })
-    //     ];
-
-    //     resolve({ data });
-    //   })
-    //   .catch(err => {
-    //     reject(err);
-    //   });
-
-
-//   });
-// };
-
-// export const handleGetOrder = orderID => {
-//   return new Promise((resolve, reject) => {
-//     firestore
-//       .collection('orders')
-//       .doc(orderID)
-//       .get()
-//       .then(snap => {
-//         if (snap.exists) {
-//           resolve({
-//             ...snap.data(),
-//             documentID: orderID
-//           })
-//         }
-//       })
-//       .catch(err => {
-//         reject(err);
-//       })
-//   })
-// }
+export const handleGetOrder = async(orderID) => {
+  console.log('handleGetOrder');
+    const collectionRef = doc(db, 'orders', orderID);
+    console.log('collectionRef:', collectionRef);
+    const q = query(collectionRef);
+    const orderDetails = await getDoc(q).then(snap => {
+      if (snap.exists) {
+        const data = ({
+          ...snap.data(),
+          documentID: orderID
+        });
+        console.log('orderDetails:',data);
+        return( data );
+      }
+      // console.log('failed return object')
+    }).catch(err => {
+      console.log(err.message);
+    })
+    // console.log('detail-data',querySnapshot);
+    // console.log('done handleGetOrder');
+    return orderDetails;  
+}

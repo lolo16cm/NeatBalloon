@@ -34,6 +34,7 @@
     "reselect": "^4.1.6",
     "sass": "^1.54.6",
     "stripe": "^10.1.0",
+    "stripe-money-format": "^1.0.10",
     "styled-components": "^5.3.5",
     "typescript": "^4.7.4",
     "web-vitals": "^2.1.4"

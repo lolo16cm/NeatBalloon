@@ -51,7 +51,7 @@ const Checkout = () => {
             {cartItems.map((cartItem) => (
                 <CheckoutItem key={cartItem.id} cartItem={cartItem} />
             ))}
-            <Total>Total: ${cartTotal}</Total>
+            <Total>Total: ${Intl.NumberFormat('en-IN', { maximumSignificantDigits: 10 }).format(cartTotal)}</Total>
             
             <Button onClick={goToPayment}>continue to payment</Button>
 

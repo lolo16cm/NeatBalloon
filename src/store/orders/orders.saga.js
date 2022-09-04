@@ -4,16 +4,15 @@ import { handleSaveOrder, handleGetUserOrderHistory, handleGetOrder } from './or
 import { auth } from '../../utils/firebase/firebase.utils';
 import { clearCart } from '../cart/cart.action';
 
-import { setUserOrderHistory } from './orders.action';
+import { setUserOrderHistory, setOrderDetails } from './orders.action';
 
 export function* getUserOrderHistory({ payload }) {
-  // console.log("orders-saga,getorderhistory")
+  console.log("orders-saga,getorderhistory")
   try {
     const history = yield handleGetUserOrderHistory(payload);
     yield put(
       setUserOrderHistory(history)
     );
-
   } catch (err) {
     console.log(err);
   }
@@ -45,27 +44,27 @@ export function* onSaveOrderHistoryStart() {
   yield takeLatest(ordersTypes.SAVE_ORDER_HISTORY_START, saveOrder);
 };
 
-// export function* getOrderDetails({ payload }) {
-//   try {
-//     const order = yield handleGetOrder(payload);
-//     console.log(order)
-//     yield put(
-//       setOrderDetails(order)
-//     )
+export function* getOrderDetails({ payload }) {
+  try {
+    const order = yield handleGetOrder(payload);
+    // console.log(order)
+    yield put(
+      setOrderDetails(order)
+    )
 
-//   } catch (err) {
-//     // console.log(err);
-//   }
-// }
+  } catch (err) {
+    // console.log(err);
+  }
+}
 
-// export function* onGetOrderDetailsStart() {
-//   yield takeLatest(ordersTypes.GET_ORDER_DETAILS_START, getOrderDetails);
-// };
+export function* onGetOrderDetailsStart() {
+  yield takeLatest(ordersTypes.GET_ORDER_DETAILS_START, getOrderDetails);
+};
 
 export default function* ordersSagas() {
   yield all([
     call(onSaveOrderHistoryStart),
     call(onGetUserOrderHistoryStart),
-    // call(onGetOrderDetailsStart),
+    call(onGetOrderDetailsStart),
   ])
 }

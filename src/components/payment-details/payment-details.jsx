@@ -13,7 +13,7 @@ import { useSelector, useDispatch} from 'react-redux';
 
 import { saveOrderHistory } from '../../store/orders/orders.action'
 import { clearCart } from "../../store/cart/cart.action";
-
+import StripeMoneyFormat from 'stripe-money-format';
 
 
 
@@ -72,7 +72,7 @@ const PaymentDetails = () => {
             return;
         }
         apiInstance.post('/payments/create', {
-            amount: total * 100,
+            amount: StripeMoneyFormat.toStripeFormat(total * 100),
             shipping: {
                 name: recipientName,
                 address: {
@@ -296,7 +296,7 @@ const PaymentDetails = () => {
                     <CardElement options={configCardElement} />
                 </div>
                 
-                <Button type="submit">Pay ${total} Now  </Button>
+                <Button type="submit">Pay ${Intl.NumberFormat('en-IN', { maximumSignificantDigits: 10 }).format(total)} Now  </Button>
                 
             </form>
 

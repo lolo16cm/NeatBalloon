@@ -4946,7 +4946,7 @@
     "base64-js" "^1.3.1"
     "ieee754" "^1.1.13"
 
-"builtin-modules@^3.1.0", "builtin-modules@^3.3.0":
+"builtin-modules@^3.1.0", "builtin-modules@^3.2.0", "builtin-modules@^3.3.0":
   "integrity" "sha512-zhaCDicdLuWN5UbN5IMnFqNMhNfo919sH85y2/ea+5Yg9TsTkeZxpL+JLbp6cgYFS4sRLp3YV4S6yDuqVWHYOw=="
   "resolved" "https://registry.npmjs.org/builtin-modules/-/builtin-modules-3.3.0.tgz"
   "version" "3.3.0"
@@ -8836,17 +8836,10 @@
   dependencies:
     "has" "^1.0.3"
 
-"is-core-module@^2.5.0", "is-core-module@^2.9.0":
+"is-core-module@^2.5.0", "is-core-module@^2.8.1", "is-core-module@^2.9.0":
   "integrity" "sha512-Erxj2n/LDAZ7H8WNJXd9tw38GYM3dv8rk8Zcs+jJuxYTW7sozH+SS8NtrSjVL1/vpLvWi1hxy96IzjJ3EHTJJg=="
   "resolved" "https://registry.npmjs.org/is-core-module/-/is-core-module-2.10.0.tgz"
   "version" "2.10.0"
-  dependencies:
-    "has" "^1.0.3"
-
-"is-core-module@^2.8.1":
-  "integrity" "sha512-+5FPy5PnwmO3lvfMb0AsoPaBG+5KHUI0wYFXOtYPnVVVspTFUuMZNfNaNVRt3FZadstu2c8x23vykRW/NBoU6A=="
-  "resolved" "https://registry.npmjs.org/is-core-module/-/is-core-module-2.9.0.tgz"
-  "version" "2.9.0"
   dependencies:
     "has" "^1.0.3"
 
@@ -10471,7 +10464,7 @@
   "resolved" "https://registry.npmjs.org/macos-release/-/macos-release-3.1.0.tgz"
   "version" "3.1.0"
 
-"magic-string@^0.25.0", "magic-string@^0.25.7":
+"magic-string@^0.25.0", "magic-string@^0.25.7", "magic-string@^0.25.9":
   "integrity" "sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ=="
   "resolved" "https://registry.npmjs.org/magic-string/-/magic-string-0.25.9.tgz"
   "version" "0.25.9"
@@ -14427,6 +14420,25 @@
   "version" "1.0.1"
   dependencies:
     "escape-string-regexp" "^1.0.2"
+
+"stripe-money-format@^1.0.10":
+  "integrity" "sha512-ydRBngCIZgpeFD5+qPDrjyPK0e0WkrbaRCl903Q4fyPCw9GmC4dWaMjrW8aPtabIl7p9aMflOcrqv3abPx4mpw=="
+  "resolved" "https://registry.npmjs.org/stripe-money-format/-/stripe-money-format-1.0.10.tgz"
+  "version" "1.0.10"
+  dependencies:
+    "builtin-modules" "^3.2.0"
+    "deepmerge" "^4.2.2"
+    "estree-walker" "^1.0.1"
+    "function-bind" "^1.1.1"
+    "has" "^1.0.3"
+    "is-core-module" "^2.8.1"
+    "is-module" "^1.0.0"
+    "magic-string" "^0.25.9"
+    "path-parse" "^1.0.7"
+    "picomatch" "^2.3.1"
+    "resolve" "^1.22.0"
+    "sourcemap-codec" "^1.4.8"
+    "supports-preserve-symlinks-flag" "^1.0.0"
 
 "stripe@^10.1.0":
   "integrity" "sha512-J5TF8ACY+aE2S0N9Uch/rXTmMwKvcrakoHFMW0hLOFpOEAUF6C+zHU4U9zNmJVBS7TQ2TLFb22EA9aHNUWi0Vg=="
