@@ -13,7 +13,7 @@ import { useSelector, useDispatch} from 'react-redux';
 
 import { saveOrderHistory } from '../../store/orders/orders.action'
 import { clearCart } from "../../store/cart/cart.action";
-import StripeMoneyFormat from 'stripe-money-format';
+
 
 
 
