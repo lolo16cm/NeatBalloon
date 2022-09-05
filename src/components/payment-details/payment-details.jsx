@@ -73,7 +73,7 @@ const PaymentDetails = () => {
             return;
         }
         apiInstance.post('/payments/create', {
-            amount: StripeMoneyFormat.toStripeFormat(total),
+            amount: total*100,
             shipping: {
                 name: recipientName,
                 address: {
