@@ -19,13 +19,19 @@ export const LogoContainer = styled(Link)`
   height: 100%;
   width: 70px;
 
-  @media screen and (max-width: 800px) {
-    transform: scale(0.8);
-    margin-left: -80px; 
+  @media screen and (max-width: 650px) {
+    margin-left: -50px;
+    transform: scale(50%, 50%);
+
   }
- 
+  @media screen and (max-width: 450px) {
+    margin-left: -50px;
+    transform: scale(35%, 30%);
+
   @media screen and (max-width: 350px) {
-    transform: scale(0.5);
+    margin-left: -50px;
+    transform: scale(25%, 30%);
+
   }
  
 `

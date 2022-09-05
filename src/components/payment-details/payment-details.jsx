@@ -46,7 +46,7 @@ const PaymentDetails = () => {
 
       useEffect(() => {
         if (itemCount < 1) { 
-        //   navigate('account');
+          navigate('/account');
         }
     
       }, [itemCount]);
@@ -54,6 +54,7 @@ const PaymentDetails = () => {
     const [shippingAddress, setShippingAddress] =  useState({...initialAddress});
     const [billingAddress, setBillingAddress] =  useState({...initialAddress});
     const [recipientName, setRecipientName] =  useState('');
+    const [receipt_email, setReceiptEmail] =  useState('');
     const [nameOnCard, setNameOnCard] =  useState('');
     const [phoneNumber, setPhoneNumber] =  useState('');
 
@@ -72,12 +73,13 @@ const PaymentDetails = () => {
             return;
         }
         apiInstance.post('/payments/create', {
-            amount: StripeMoneyFormat.toStripeFormat(total * 100),
+            amount: StripeMoneyFormat.toStripeFormat(total),
             shipping: {
                 name: recipientName,
                 address: {
                     ...shippingAddress
                 }
+
             }
         }).then(({ data: clientSecret }) => {
 
@@ -86,6 +88,7 @@ const PaymentDetails = () => {
               card: cardElement,
               billing_details: {
                 name: nameOnCard,
+                email: receipt_email,
                 address: {
                   ...billingAddress
                 }
@@ -127,6 +130,10 @@ const PaymentDetails = () => {
 
     const handleTel = (event) => {
         setPhoneNumber( event.target.value );
+    };
+
+    const handleEmail = (event) => {
+        setReceiptEmail( event.target.value );
     };
 
     const handleNameOnCard = (event) => {
@@ -182,6 +189,15 @@ const PaymentDetails = () => {
                     value={phoneNumber}
                     type="tel" 
                    
+                    />
+                     <FormInput
+                    label="Email"
+                    required
+                    name="receipt_email"
+                    onChange={handleEmail}
+                    value={receipt_email}
+                    type="email" 
+                    FormInput
                     />
 
                     <FormInput

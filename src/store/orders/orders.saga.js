@@ -32,7 +32,7 @@ export function* saveOrder({ payload }) {
       orderCreatedDate: timestamps
     });
     yield put(
-      // clearCart()
+      clearCart()
     )
 
   } catch (err) {
@@ -47,7 +47,7 @@ export function* onSaveOrderHistoryStart() {
 export function* getOrderDetails({ payload }) {
   try {
     const order = yield handleGetOrder(payload);
-    // console.log(order)
+    
     yield put(
       setOrderDetails(order)
     )

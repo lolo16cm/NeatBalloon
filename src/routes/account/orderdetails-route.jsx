@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getOrderDetailsStart } from '../../store/orders/orders.action'; 
 import { useDispatch, useSelector } from 'react-redux';
 import OrderDetails from './../../components/account-component/order-details';
-
+import {OderIdHeader} from './order-details.styles';
 const mapState = ({ orders }) => ({
   orderDetails: orders.orderDetails
 });
@@ -13,7 +13,7 @@ const Order = () => {
   const dispatch = useDispatch();
   const { orderDetails } = useSelector(mapState);
   const { orderTotal } = orderDetails;
-    // console.log('orderDetails:',orderDetails);
+   
   useEffect(() => {
     dispatch(
       getOrderDetailsStart(orderID)
@@ -23,10 +23,10 @@ const Order = () => {
   return (
     <div>
 
-      <h1>
-        Order ID: #{orderID}
-      </h1>
-        {/* {console.log('Outside:',orderDetails.orderItems)} */}
+      <OderIdHeader>
+        Order Number: {orderID}
+      </OderIdHeader>
+      
       <OrderDetails order={orderDetails} />
 
       <h3>
