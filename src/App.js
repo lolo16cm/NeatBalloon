@@ -22,7 +22,7 @@ import { checkUserSession } from './store/user/user.action';
 // } from './utils/firebase/firebase.utils';
 
 import { GlobalStyle } from './global.styles';
-import ErrorBoundary from './utils/firebase/errorboundary';
+
 
 const App = () => {
   const dispatch = useDispatch();
