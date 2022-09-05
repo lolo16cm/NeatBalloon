@@ -16,11 +16,25 @@ export const AboutWrapper = styled.section`
 
     p{
         line-height: 3;
-        max-width: 60%;
+        max-width: 65%;
         margin: 0 auto;
         margin-top: 30px;
         font-size: 20px;
         color: gray;
+
+        @media screen and (max-width: 800px) {
+            max-width: 80%;
+            font-size: 18px;
+            line-height: 2;
+          }
+
+        @media screen and (max-width: 500px) {
+            max-width: 80%;
+            font-size: 14px;
+            line-height: 2;
+          }
+
+
     }
 
     .title{

@@ -9,6 +9,18 @@
         margin-top: 15px;
         cursor: pointer;
         color: dimgrey;
+
+        @media screen and (max-width: 350px) {
+            grid-template-columns: repeat(2, 1fr);
+            row-gap: 20px;
+            font-size: 30px;
+        }
+    }
+
+    .categorySubtitle {
+        font-size: 15px;
+        color: #FE5BAC;
+        margin-top: -10px;
     }
 
     .preview {

@@ -22,7 +22,7 @@ const categories = [
   {
     id: 3,
     title: '16" Balloon',
-    subtitle: '(1 box/100ct)',
+    subtitle: '(1 box/50ct)',
     imageUrl: 'https://i.pinimg.com/564x/20/0d/23/200d23767ad5c4a4642109404c0e6961.jpg',
     route: 'shop/16"',
   },
@@ -30,7 +30,7 @@ const categories = [
   {
     id: 4,
     title: '17" Balloon',
-    subtitle: '(1 box/100ct)',
+    subtitle: '(1 box/50ct)',
     imageUrl: 'https://i.pinimg.com/564x/3e/bc/a8/3ebca843906cfb55f524537fa8bd49aa.jpg',
     route: 'shop/17"',
   },
