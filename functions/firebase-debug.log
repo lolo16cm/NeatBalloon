@@ -977,3 +977,6 @@ Issues? Report them at https://github.com/firebase/firebase-tools/issues and att
 [info] i  functions: Finished "api" in ~1s {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"api\" in ~1s"}}
 [debug] [2022-09-05T06:32:47.511Z] [worker-us-central1-api-5eea937c-e05b-446a-a8a1-7ceef48dd7a5]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-5eea937c-e05b-446a-a8a1-7ceef48dd7a5]: IDLE"}}
 [debug] [2022-09-05T06:32:47.511Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2022-09-05T07:19:14.781Z] [worker-us-central1-api-5eea937c-e05b-446a-a8a1-7ceef48dd7a5]: exited {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-5eea937c-e05b-446a-a8a1-7ceef48dd7a5]: exited"}}
+[debug] [2022-09-05T07:19:14.782Z] [worker-us-central1-api-5eea937c-e05b-446a-a8a1-7ceef48dd7a5]: FINISHED {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-api-5eea937c-e05b-446a-a8a1-7ceef48dd7a5]: FINISHED"}}
+[debug] [2022-09-05T07:19:14.785Z] Received signal SIGHUP 1
