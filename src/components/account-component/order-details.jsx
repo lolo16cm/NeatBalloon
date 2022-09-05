@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   TableContainer, Table, TableHead,
   TableBody, TableRow, TableCell
@@ -30,8 +30,7 @@ const styles = {
   width: '10%'
 };
 
-const formatText = (columnName, columnValue) => {
-  console.log('columnValue:',columnValue);
+const formatText = (columnName, columnValue) => {  
   switch(columnName) {
     case 'price':
       return `$${columnValue}`;
@@ -43,10 +42,18 @@ const formatText = (columnName, columnValue) => {
 }
 
 const OrderDetails = ({ order }) => {
-  const dispatch = useDispatch();
-  const orderItems = order && order.orderItems;
-  // {'imageUrl':"https://cdn10.bigcommerce.com/s-o0d6ce9f7h/products/5301/images/7598/43869__55133.1651948507.356.300.jpg?c=2",'name':"16\" Qualatex Standard Green Helium Latex Balloons 50ct #43869",'price':17.5,'quantity':1};
-  console.log('orderItems',orderItems);
+  const dispatch = useDispatch(); 
+  let data= Object.entries(order);
+  const items = []
+  data.forEach(([key, val]) =>{
+    console.log('key',key);
+    console.log('val',val);
+    if(key === 'orderItems'){
+      Object.entries(val).forEach((left, right) =>{
+        items.push(left);
+      })      
+    }
+  });
   useEffect(() => {
     return () => {
       dispatch(
@@ -54,6 +61,7 @@ const OrderDetails = ({ order }) => {
       );
     }
   }, []);
+
 
   return (
     <TableContainer>
@@ -77,27 +85,23 @@ const OrderDetails = ({ order }) => {
 
           </TableRow>
         </TableHead>
-        
         <TableBody>
+          {(Array.isArray(items) && items.length > 0) && items.map((row, pos) => {
 
-          {(Array.isArray(orderItems) && orderItems.length > 0) && orderItems.entries().map((row, pos) => {
-            console.log('data');
-            
+            const rowData = row[1];
             return (
               <TableRow key={pos}>
 
-                {columns.map((col, pos) => {                 
+                {columns.map((col, pos) => { 
+                    
                   const columnName = col.id;
-                  const columnValue = row[columnName];
-                  console.log('columnValue',columnValue); 
-                  const formattedText = formatText(columnName, columnValue);
-
+                  const columnValue = rowData[columnName];
+                  console.log('row',row);
                   return (                    
                     <TableCell
                       key={pos}
                       style={styles}
                     >
-                      {formattedText}
                       {formatText(columnName, columnValue)}
                     </TableCell>
                   )

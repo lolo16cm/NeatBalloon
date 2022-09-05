@@ -26,11 +26,11 @@ const Order = () => {
       <h1>
         Order ID: #{orderID}
       </h1>
-
+        {/* {console.log('Outside:',orderDetails.orderItems)} */}
       <OrderDetails order={orderDetails} />
 
       <h3>
-        Total: {Intl.NumberFormat('en-IN', { maximumSignificantDigits: 10 }).format(orderTotal)}
+        Total: ${Intl.NumberFormat('en-IN', { maximumSignificantDigits: 10 }).format(orderTotal)}
       </h3>
 
     </div>
