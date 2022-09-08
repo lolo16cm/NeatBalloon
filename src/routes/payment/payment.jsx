@@ -2,9 +2,10 @@ import React from 'react';
 import PaymentDetails from '../../components/payment-details/payment-details';
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js';
+import { publishableKey } from '../../utils/stripe/stripe.utils';
 
- 
-export const stripePromise = loadStripe('pk_test_di8U5kwkIw2iMILBVvqjIriu');
+
+export const stripePromise = loadStripe(publishableKey);
 
 const Payment = () => {
     return(
